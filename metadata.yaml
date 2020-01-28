@@ -1,0 +1,4 @@
+name: demo-charm
+summary: Demo charm to try out the Operator Framework
+description: |
+  Demo charm to try out the Operator Framework
