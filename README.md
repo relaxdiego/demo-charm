@@ -12,8 +12,8 @@ Installation
 sudo snap install juju --classic
 sudo snap install microk8s --classic
 sudo microk8s.enable dns dashboard registry storage
-sudo juju bootstrap microk8s mk8s
-sudo juju create-storage-pool operator-storage kubernetes storage-class=microk8s-hostpath
+juju bootstrap microk8s mk8s
+juju create-storage-pool operator-storage kubernetes storage-class=microk8s-hostpath
 juju add-model demo-charm
 juju deploy .
 ```
