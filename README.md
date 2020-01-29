@@ -1,8 +1,10 @@
 Demo Charm
 ==========
 
-This is a demo charm that I'm using to learn the Operator Framework.
 It's new! It's shiny! It's definitely buggy!
+
+
+This is just a charm that I'm using to learn the Operator Framework.
 
 
 Installation
