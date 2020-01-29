@@ -1,5 +1,9 @@
 #!/usr/bin/env python3.6
 
+import os
+cwd = os.getcwd()
+print(cwd)
+
 import sys
 sys.path.append('lib')
 
