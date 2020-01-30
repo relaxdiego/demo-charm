@@ -15,7 +15,8 @@ class DemoCharm(CharmBase):
 
     def __init__(self, *args):
         super().__init__(*args)
-        self.framework.observe(self.on.start, DemoObserver())
+        observer = DemoObserver(self.framework, None)
+        self.framework.observe(self.on.start, observer)
 
 
 class DemoObserver(framework.Object):
