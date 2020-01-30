@@ -15,19 +15,16 @@ class DemoCharm(CharmBase):
 
     def __init__(self, *args):
         super().__init__(*args)
-        observer = DemoObserver(self.framework, None)
+        observer = DemoObserver(self)
         self.framework.observe(self.on.start, observer.on_start)
 
 
 class DemoObserver(framework.Object):
 
-    def __init__(self, parent, key):
-        super().__init__(parent, key)
-        self.seen = []
-        self.done = {}
+    def __init__(self, charm):
+        super().__init__(charm)
 
     def on_start(self, event):
-        self.seen.append(event.handle.kind)
         self.framework.model.unit.status = \
             MaintenanceStatus("It's new! It's shiny! It's quite buggy!")
         return
