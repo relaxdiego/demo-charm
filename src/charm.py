@@ -27,6 +27,7 @@ class DemoObserver(framework.Object):
         self.done = {}
 
     def on_start(self, event):
+        self.seen.append(event.handle.kind)
         self.framework.model.unit.status = \
             MaintenanceStatus("It's new! It's shiny! It's quite buggy!")
         return
