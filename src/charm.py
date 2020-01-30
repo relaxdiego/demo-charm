@@ -21,6 +21,9 @@ class DemoCharm(CharmBase):
 
 class DemoObserver(framework.Object):
 
+    def __init__(self, parent, key):
+        super().__init__(parent, key)
+
     def on_start(self, event):
         self.framework.model.unit.status = \
             MaintenanceStatus("It's new! It's shiny! It's quite buggy!")
