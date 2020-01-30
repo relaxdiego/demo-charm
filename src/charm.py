@@ -1,12 +1,9 @@
 #!/usr/bin/env python3.6
 
-import os
-cwd = os.getcwd()
-print(cwd)
-
 import sys
 sys.path.append('lib')
 
+from ops import framework
 from ops.charm import CharmBase
 from ops.main import main
 from ops.model import (
@@ -18,11 +15,14 @@ class DemoCharm(CharmBase):
 
     def __init__(self, *args):
         super().__init__(*args)
-        self.framework.observe(self.on.start, self)
+        self.framework.observe(self.on.start, DemoObserver())
+
+
+class DemoObserver(framework.Object):
 
     def on_start(self, event):
         self.framework.model.unit.status = \
-            MaintenanceStatus('Configuring container')
+            MaintenanceStatus("It's new! It's shiny! It's quite buggy!")
         return
 
 
