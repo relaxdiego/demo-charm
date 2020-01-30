@@ -22,7 +22,7 @@ class DemoCharm(CharmBase):
 class DemoObserver(framework.Object):
 
     def __init__(self, charm):
-        super().__init__(charm)
+        super().__init__(charm, None)
 
     def on_start(self, event):
         self.framework.model.unit.status = \
