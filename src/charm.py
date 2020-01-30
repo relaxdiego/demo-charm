@@ -23,6 +23,8 @@ class DemoObserver(framework.Object):
 
     def __init__(self, parent, key):
         super().__init__(parent, key)
+        self.seen = []
+        self.done = {}
 
     def on_start(self, event):
         self.framework.model.unit.status = \
