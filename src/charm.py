@@ -1,7 +1,5 @@
 #!/usr/bin/env python3.6
 
-import logging
-
 import sys
 sys.path.append('lib')
 
@@ -17,10 +15,8 @@ class DemoCharm(CharmBase):
 
     def __init__(self, *args):
         super().__init__(*args)
-        logger = logging.getLogger(__name__)
-        logger.debug("Initializing charm")
-        observer = DemoObserver(self)
-        self.framework.observe(self.on.start, observer.on_start)
+        self.observer = DemoObserver(self)
+        self.framework.observe(self.on.start, self.observer.on_start)
 
 
 class DemoObserver(framework.Object):
