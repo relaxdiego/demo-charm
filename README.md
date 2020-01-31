@@ -30,3 +30,15 @@ juju create-storage-pool operator-storage kubernetes storage-class=microk8s-host
 juju add-model demo-charm
 juju deploy .
 ```
+
+Developing
+----------
+
+We do charm unit testing in this here parts. We're not savages.
+
+```
+pip install tox
+tox
+```
+
+Check out how tests are written in the `test/` dir.
