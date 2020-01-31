@@ -15,14 +15,21 @@ class DemoCharm(CharmBase):
 
     def __init__(self, *args):
         super().__init__(*args)
+
+        # Ensure that this charm keeps a reference to the observer so that
+        # it doesn't get garbage collected when initialization is done.
         self.observer = DemoObserver(self)
-        self.framework.observe(self.on.start, self.observer.on_start)
+
+        # This call makes the framework call an `on_start` method on the
+        # observer when the `start` event is emmitted.
+        self.framework.observe(self.on.start, self.observer)
 
 
 class DemoObserver(framework.Object):
 
     def __init__(self, charm):
-        super().__init__(charm, "1")
+        # As of operator framework 90b9bb13, the second argument is required.
+        super().__init__(charm, None)
 
     def on_start(self, event):
         self.framework.model.unit.status = \
