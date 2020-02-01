@@ -8,19 +8,18 @@ from unittest.mock import (
 sys.path.append('src')
 sys.path.append('lib')
 
-from charm import OnStartHandler
+import handlers
 
 
-class TestOnStartHandler(unittest.TestCase):
+class TestStartHandler(unittest.TestCase):
 
-    @patch('charm.MaintenanceStatus')
+    @patch('handlers.MaintenanceStatus')
     def test_happy_path(self, mock_maint_status_cls):
         # Set up
-        handler = OnStartHandler()
         event = object()
 
         # Exercise the code
-        output = handler.handle(event)
+        output = handlers.start(event)
 
         # Assertions
         assert mock_maint_status_cls.call_count == 1
